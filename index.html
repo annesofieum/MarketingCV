@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anne Sofie Uhrskov Mikkelsen - Marketing Projektleder</title>
     <style>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background: #1e4a28;"></div>
-                            <span>Stærkt niveau (Pro/Ekspert niveau)</span>
-                        </div>body {
+        body {
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #0a1f0f 0%, #1a3a24 50%, #0a1f0f 100%);
             margin: 0;
@@ -16,6 +13,7 @@
             line-height: 1.6;
             color: #333;
             min-height: 100vh;
+            cursor: crosshair;
         }
         
         .container {
@@ -87,6 +85,12 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             margin-bottom: 20px;
             border: 2px solid #f0f0f0;
+            transition: all 0.3s ease-out;
+        }
+
+        .content-box.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title {
@@ -413,6 +417,29 @@
             font-weight: bold;
             fill: #1e4a28;
         }
+
+        /* PDF Download Button */
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #1e4a28, #2d5d37);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(30, 74, 40, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 74, 40, 0.4);
+        }
         
         @media (max-width: 768px) {
             .main-content {
@@ -448,6 +475,13 @@
             .stats-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .download-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -462,28 +496,29 @@
             <button class="nav-button active" onclick="showSection('profile', this)">Profil</button>
             <button class="nav-button inactive" onclick="showSection('competencies', this)">Kompetencer</button>
             <button class="nav-button inactive" onclick="showSection('experience', this)">Erfaring</button>
+            <button class="nav-button inactive" onclick="showSection('education', this)">Uddannelse</button>
             <button class="nav-button inactive" onclick="showSection('motivation', this)">Motivation</button>
         </div>
 
         <div id="profile-section" class="content-box">
-            <div class="profile-header">Struktureret koordinator med kreativt drive - din marketing blæksprutte</div>
+            <div class="profile-header">Struktureret koordinator med kreativt drive</div>
             <p class="profile-description">
                 Erfaren koordinator med en god blanding af struktur og kreativt kaos. 
                 Specialist i at holde overblikket, samle folk om fællesmål og løse problemer når de opstår. 
-                Passioneret omkring marketing der vækker følelser og nysgerrighed - især inden for mad og kultur, som er mine to største passioner.
+                Passioneret omkring marketing der vækker følelser og nysgerrighed.
             </p>
             
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">50+</div>
-                    <div class="stat-label">Brands ledet</div>
+                    <div class="stat-label">Brands koordineret</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">3</div>
-                    <div class="stat-label">År erfaring</div>
+                    <div class="stat-label">Års erfaring</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">Afsluttet</div>
+                    <div class="stat-number">Nyligt afsluttet</div>
                     <div class="stat-label">Projektledelses kursus</div>
                 </div>
             </div>
@@ -540,7 +575,7 @@
                     <svg id="skillChart"></svg>
                     <div class="legend">
                         <div class="legend-item">
-                            <div class="legend-color" style="background: #2d6b3d;"></div>
+                            <div class="legend-color" style="background: #1e4a28;"></div>
                             <span>Stærkt niveau (Pro/Ekspert niveau)</span>
                         </div>
                         <div class="legend-item">
@@ -585,9 +620,9 @@
                     <div class="skills-grid">
                         <div class="skill-tag">Projektkoordination</div>
                         <div class="skill-tag">Team Ledelse</div>
-                        <div class="skill-tag">Strategisk Ejerskab</div>
                         <div class="skill-tag">Performance Tracking</div>
                         <div class="skill-tag">Tværfagligt Samarbejde</div>
+                        <div class="skill-tag">Visuel kommunikation</div>
                     </div>
                     <p><strong>Nøgleansvarsområder:</strong></p>
                     <ul style="margin-left: 20px; margin-bottom: 15px;">
@@ -629,7 +664,6 @@
                 <div id="salling-details" class="experience-details">
                     <div class="skills-grid">
                         <div class="skill-tag">Markedsresearch</div>
-                        <div class="skill-tag">Roadmap Planlægning</div>
                         <div class="skill-tag">Data Analyse</div>
                     </div>
                     <p><strong>Nøgleansvarsområder:</strong></p>
@@ -638,6 +672,57 @@
                         <li>Koordinerede udviklingsprojekter mellem indkøb, marketing og supply chain teams</li>
                     </ul>
                     <p><strong>Marketing projektleder-relevant case:</strong> Sporede sæsonprodukt performance og tilpassede roadmap baseret på real-time salgsdata - kernekompetence for post-launch tracking og roadmap-justeringer som er essentielt for festivalmarketing koordination.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="education-section" class="content-box hidden">
+            <div class="profile-header">Uddannelse & Kurser</div>
+            <p class="profile-description">
+                Relevant uddannelse og kompetenceudvikling der styrker mine kvalifikationer som Marketing Projektleder.
+            </p>
+            
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('education-uni')">
+                    <div class="experience-title">Designkultur og Økonomi</div>
+                    <div class="experience-company">Syddansk Universitet Kolding (August 2018 - Juli 2021)</div>
+                </div>
+                <div id="education-uni-details" class="experience-details">
+                    <div class="skills-grid">
+                        <div class="skill-tag">Design Thinking</div>
+                        <div class="skill-tag">Økonomiforståelse</div>
+                        <div class="skill-tag">Kulturanalyse</div>
+                        <div class="skill-tag">Visuel kommunikation</div>
+                    </div>
+                    <p><strong>Uddannelsens fokus:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Kombination af kreative design processer og økonomisk forståelse</li>
+                        <li>Kulturelle trends og deres indvirkning på forbrugeradfærd</li>
+                        <li>Visuel kommunikation og brand udvikling</li>
+                        <li>Forretningsforståelse og markedsmekanismer</li>
+                    </ul>
+                    <p><strong>Marketing projektleder-relevant:</strong> Uddannelsen har givet mig en unik kombination af kreativt design thinking og solid forretningsforståelse - perfekt til at forstå både de kreative og kommercielle aspekter af marketing projekter.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('education-kursus')">
+                    <div class="experience-title">Projektledelses Kursus</div>
+                    <div class="experience-company">Afsluttet Juli 2025 • Formelle værktøjer</div>
+                </div>
+                <div id="education-kursus-details" class="experience-details">
+                    <div class="skills-grid">
+                        <div class="skill-tag">Projektledelse</div>
+                        <div class="skill-tag">Strukturering</div>
+                        <div class="skill-tag">Koordination</div>
+                    </div>
+                    <p><strong>Formål og resultat:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Gennemførte projektledelses kursus for at få formelle værktøjer til min naturlige koordinationsevne</li>
+                        <li>Kombination af praktisk erfaring og teoretisk viden</li>
+                        <li>Muligheden tilbød sig, og jeg ville gerne genopfriske det fra tidligere studier</li>
+                    </ul>
+                    <p><strong>Marketing projektleder-relevant:</strong> Kurset har givet mig de formelle værktøjer til at strukturere komplekse marketing indsatser og koordinere teams effektivt - perfekt match til Mad & Kulturs behov for struktureret projektledelse.</p>
                 </div>
             </div>
         </div>
@@ -668,9 +753,16 @@
         </div>
     </div>
 
+    <!-- PDF Download Button -->
+    <button class="download-btn" onclick="downloadPDF()">
+        📄 Download PDF
+    </button>
+
     <script>
         function showSection(sectionName, buttonElement) {
-            var sections = ['profile', 'competencies', 'experience', 'motivation'];
+            var sections = ['profile', 'competencies', 'experience', 'education', 'motivation'];
+            
+            // Hide all sections
             for (var i = 0; i < sections.length; i++) {
                 var sectionElement = document.getElementById(sections[i] + '-section');
                 if (sectionElement) {
@@ -678,11 +770,17 @@
                 }
             }
 
+            // Show target section
             var targetSection = document.getElementById(sectionName + '-section');
             if (targetSection) {
                 targetSection.classList.remove('hidden');
+                
+                if (sectionName === 'competencies') {
+                    setTimeout(drawRadarChart, 100);
+                }
             }
 
+            // Update buttons
             var buttons = document.getElementsByClassName('nav-button');
             for (var j = 0; j < buttons.length; j++) {
                 buttons[j].className = 'nav-button inactive';
@@ -690,10 +788,6 @@
 
             if (buttonElement) {
                 buttonElement.className = 'nav-button active';
-            }
-
-            if (sectionName === 'competencies') {
-                setTimeout(drawRadarChart, 100);
             }
         }
 
@@ -703,13 +797,19 @@
                 if (details.style.display === 'block') {
                     details.style.display = 'none';
                 } else {
+                    // Close all other details first
                     var allDetails = document.getElementsByClassName('experience-details');
                     for (var k = 0; k < allDetails.length; k++) {
                         allDetails[k].style.display = 'none';
                     }
+                    // Then open the clicked one
                     details.style.display = 'block';
                 }
             }
+        }
+
+        function downloadPDF() {
+            window.print();
         }
 
         var skills = [
@@ -746,28 +846,28 @@
                 level: 3,
                 description: "Grundlæggende forståelse af digitale marketing platforme med stærk motivation for at udvikle kompetencer inden for Meta, WordPress og email marketing.",
                 needsDescription: "Meta annoncering (Facebook & Instagram), WordPress hjemmesider, email-marketing og online kanaler",
-                contribution: "Solid fundament i digitale platforme og struktureret tilgang til at mestre avancerede digital marketing strategier. Hurtig til at tilegne mig nye værktøjer."
+                contribution: "Solid fundament i digitale platforme og hurtig til at tilegne mig nye værktøjer."
             },
             {
                 name: "Event & Festival Marketing",
                 level: 2,
                 description: "Nyt område med stor motivation for at lære festival marketing og forstå de særlige udfordringer ved event promotion og gæste-kunderejsen.",
                 needsDescription: "Forståelse af festival marketing, billetsalg-marketing og gæste-kunderejsen fra awareness til post-event",
-                contribution: "Mens jeg er ny i event marketing, bringer jeg struktureret tilgang og friske perspektiver. Min erfaring med community building og storytelling er direkte relevant."
+                contribution: "Mens jeg er ny i event marketing, bringer jeg struktureret tilgang og friske perspektiver."
             },
             {
                 name: "Performance Tracking & ROI",
                 level: 3,
                 description: "Erfaring med performance måling og optimering gennem salgsdata analyse og kontinuerlig forbedring af processer.",
                 needsDescription: "Systematisk tracking af marketing performance og ROI på tværs af alle kanaler",
-                contribution: "Solid erfaring med sales performance analyse og process optimering. Struktureret tilgang til måling og stærk motivation for at mestre avanceret marketing analytics."
+                contribution: "Stærk motivation for at blive endnu dygtigere."
             },
             {
                 name: "PR & Netværk Relations",
                 level: 3,
                 description: "Grundlæggende erfaring med stakeholder relations og kommunikation, som kan udvikles til PR og presseindsatser.",
                 needsDescription: "PR, presseindsatser og netværks- og relationsmarkedsføring i lokalsamfund",
-                contribution: "Stærke kommunikationsevner og naturlig relationship builder. Erfaring med at arbejde med eksterne partnere og stakeholders på tværs af forskellige industrier."
+                contribution: "Stærke kommunikationsevner og erfaring med at arbejde med eksterne partnere og stakeholders på tværs af forskellige arbejdsområder."
             }
         ];
 
@@ -858,32 +958,26 @@
                 var labelX = center.x + Math.cos(angle) * labelRadius;
                 var labelY = center.y + Math.sin(angle) * labelRadius;
 
-                // Split long skill names into multiple lines
                 var words = skill.name.split(' ');
                 var lines = [];
                 
                 if (words.length > 2) {
-                    // For names with more than 2 words, split roughly in half
                     var midPoint = Math.ceil(words.length / 2);
                     lines = [
                         words.slice(0, midPoint).join(' '),
                         words.slice(midPoint).join(' ')
                     ];
                 } else if (words.length === 2 && (words[0].length + words[1].length) > 12) {
-                    // For long two-word names, split into separate lines
                     lines = words;
                 } else {
-                    // For short names, keep on one line
                     lines = [skill.name];
                 }
 
-                // Create a group element for the label
                 var labelGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
                 labelGroup.classList.add('skill-label');
                 labelGroup.skillData = skill;
                 labelGroup.onclick = function() { showSkillDetails(this.skillData); };
 
-                // Create text elements for each line
                 lines.forEach(function(line, lineIndex) {
                     var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                     text.setAttribute('x', labelX);
@@ -921,51 +1015,8 @@
             }
         }
 
-        function showSection(sectionName, buttonElement) {
-            var sections = ['profile', 'competencies', 'experience', 'motivation'];
-            for (var i = 0; i < sections.length; i++) {
-                var sectionElement = document.getElementById(sections[i] + '-section');
-                if (sectionElement) {
-                    sectionElement.classList.add('hidden');
-                }
-            }
-
-            var targetSection = document.getElementById(sectionName + '-section');
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-            }
-
-            var buttons = document.getElementsByClassName('nav-button');
-            for (var j = 0; j < buttons.length; j++) {
-                buttons[j].className = 'nav-button inactive';
-            }
-
-            if (buttonElement) {
-                buttonElement.className = 'nav-button active';
-            }
-
-            if (sectionName === 'competencies') {
-                setTimeout(drawRadarChart, 100);
-            }
-        }
-
-        function toggleExperience(experienceId) {
-            var details = document.getElementById(experienceId + '-details');
-            if (details) {
-                if (details.style.display === 'block') {
-                    details.style.display = 'none';
-                } else {
-                    var allDetails = document.getElementsByClassName('experience-details');
-                    for (var k = 0; k < allDetails.length; k++) {
-                        allDetails[k].style.display = 'none';
-                    }
-                    details.style.display = 'block';
-                }
-            }
-        }
-
         window.onload = function() {
-            var sections = ['competencies', 'experience', 'motivation'];
+            var sections = ['competencies', 'experience', 'education', 'motivation'];
             for (var i = 0; i < sections.length; i++) {
                 var sectionElement = document.getElementById(sections[i] + '-section');
                 if (sectionElement) {
@@ -976,6 +1027,7 @@
             var profileSection = document.getElementById('profile-section');
             if (profileSection) {
                 profileSection.classList.remove('hidden');
+                profileSection.classList.add('visible');
             }
             
             var buttons = document.getElementsByClassName('nav-button');
@@ -985,6 +1037,12 @@
                 } else {
                     buttons[j].className = 'nav-button inactive';
                 }
+            }
+            
+            // Force close all experience details on load
+            var allDetails = document.getElementsByClassName('experience-details');
+            for (var k = 0; k < allDetails.length; k++) {
+                allDetails[k].style.display = 'none';
             }
             
             drawRadarChart();
